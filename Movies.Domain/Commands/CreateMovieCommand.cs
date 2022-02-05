@@ -1,6 +1,7 @@
 ﻿using Flunt.Notifications;
 using Flunt.Validations;
 using Movies.Domain.Commands.Contracts;
+using Movies.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Movies.Domain.Commands
 {
-    public class CreateMovieCommand : Contract<CreateMovieCommand>, ICommand
+    public class CreateMovieCommand : Notifiable, ICommand
     {
         public string Title { get; set; }
         public string Description { get; set; }
@@ -33,10 +34,11 @@ namespace Movies.Domain.Commands
 
         public void Validate()
         {
-            Requires()
-                .IsNotNullOrEmpty(Title, "Title", "Title cannot be null")
-                .IsNotNullOrEmpty(Description, "Description", "Description Cannot be null")
-                .IsGreaterThan(0, Rate, "Rate Cannot be null");
+            AddNotifications(new Contract()
+                .Requires()
+                .HasMinLen(Title, 3, "CreateMovieCommand.Title", "Title must contain at least 3 caracteres")
+                .HasMinLen(Description, 10, "CreateMovieCommand.Description", "Description must contain at least 10 caracteres")
+                .IsGreaterThan(Rate, 0, "CreateMovieCommand.Rate", "Rate must be above 0"));
         }
     }
 }
