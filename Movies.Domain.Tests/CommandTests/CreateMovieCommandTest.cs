@@ -1,9 +1,5 @@
 ﻿using Movies.Domain.Commands;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Movies.Domain.Tests.CommandTests
