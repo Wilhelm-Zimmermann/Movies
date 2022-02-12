@@ -3,14 +3,14 @@ using System.Linq.Expressions;
 
 namespace Movies.Domain.Queries
 {
-    public class MoviesQueries
+    public static class MoviesQueries
     {
-        public Expression<Func<Movie, bool>> GetMovieById(Guid id)
+        public static Expression<Func<Movie, bool>> GetMovieById(Guid id)
         {
             return x => x.Id == id;
         }
 
-        public Expression<Func<Movie,bool>> GetMoviesPerCategory(string category)
+        public static Expression<Func<Movie,bool>> GetMoviesPerCategory(string category)
         {
             return x => x.Category == category;
         }
