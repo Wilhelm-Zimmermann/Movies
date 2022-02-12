@@ -8,11 +8,11 @@ namespace Movies.Domain.Commands
     {
         public string Title { get; set; }
         public string Description { get; set; }
-        public TimeSpan DurationInMinutes { get; set; }
+        public int DurationInMinutes { get; set; }
         public string Category { get; set; }
         public int Rate { get; set; }
 
-        public CreateMovieCommand(string title, string description, TimeSpan durationInMinutes, string category, int rate)
+        public CreateMovieCommand(string title, string description, int durationInMinutes, string category, int rate)
         {
             Title = title;
             Description = description;
