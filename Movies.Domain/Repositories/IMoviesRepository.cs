@@ -9,6 +9,6 @@ namespace Movies.Domain.Repositories
         Task DeleteMovie(Movie movie);
         Task<IEnumerable<Movie>> GetMovies();
         Task<Movie> GetMovieById(Guid id);
-        Task<Movie> GetMoviesPerCategory(string category);
+        Task<IEnumerable<Movie>> GetMoviesPerCategory(string category);
     }
 }
